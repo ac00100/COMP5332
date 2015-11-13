@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script>
+
+    $.ajax({ 
+	    type: 'GET', 
+	    url: 'http://ac00100.com:8080/RestApp/api/tasks', 
+	    data: { get_param: 'value' }, 
+	    dataType: 'json',
+// 	    username: 'admin',
+// 	    password: 'admin',
+// 	    headers: {
+// 	        "Authorization": "Basic " + window.btoa("admin" + ":" + "admin")
+// 	      },
+	    success: function (data) { 
+	        $.each(data, function(i, obj) {
+	        	$('#tbl1 tr:last').after('<tr><td>'+obj.id+'</td><td>'+obj.taskname+'</td><td>'+obj.status+'</td></tr>');
+	        	 //$('#div1').append("id:" + obj.id + ", task:" + obj.taskname + ", status:" + obj.status + "<br />");
+        	});
+	    }
+	});
+  
+    </script>
+</head>
+
+<body>
+<table id="tbl1" class="table table-condensed table-hover table-striped" cellspacing="0" width="100%">
+<thead>
+<tr><th>ID</th><th>Task</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr></tr>
+</tbody>
+</table>
+</body>
+
+</html>
